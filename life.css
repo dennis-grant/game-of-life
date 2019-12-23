@@ -1,0 +1,36 @@
+.pond {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border-top: solid 1px #0000ff;
+    border-left: solid 1px #0000ff;
+}
+
+.cell {
+    border-right: solid 1px #0000ff;
+    border-bottom: solid 1px #0000ff;
+    background-color: #add8e6;
+}
+
+.alive {
+    background-color: #0000ff;
+}
+
+.button-panel {
+    position: absolute;
+    top: 8px;
+    left: 825px;
+}
+
+.button-panel button {
+    margin-bottom: 6px;
+    display: none;
+    width: 130px;
+    height: 30px;
+    background-color: #00cc00;
+}
+
+#btnGlider, #btnLWSS, #btnPulsar, #btnAcorn, #btnRPentomino, #btnGliderGun, #btnLine, #btnInvert {
+    background-color: #ffd700;
+    display: block;
+}

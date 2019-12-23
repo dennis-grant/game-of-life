@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>life</title>
+<style>
+<!--
+@import url("life.css");
+-->
+</style>
+
+<script src="underscore.js"></script>
+<script src="jquery.js"></script>
+
+<script src="dkg-game-of-life.js"></script>
+<script src="shapes.js"></script>
+<script src="pond.js"></script>
+<script src="life-cycle.js"></script>
+
+<script>
+$(document).ready(function() {
+    var p;
+    var lc;
+
+    p = new dkg.Pond(100, 50, 7, 7);
+    lc = new dkg.LifeCycle(p);
+
+    $("#btnStart, #btnClear").css({display:'block'});
+    $("#btnStart").click(function() {
+        lc.start();
+        $("#btnStart").css({display:'none'});
+        $("#btnPause").css({display:'block'});
+    });
+
+    $("#btnPause").click(function() {
+        lc.stop();
+        $("#btnPause").css({display:'none'});
+        $("#btnContinue, #btnPulse").css({display:'block'});
+    });
+
+    $("#btnContinue").click(function() {
+        lc.start();
+        $("#btnPause").css({display:'block'});
+        $("#btnContinue, #btnPulse").css({display:'none'});
+    });
+
+    $("#btnPulse").click(function() {
+        lc.pulse();
+    });
+
+    $("#btnClear").click(function() {
+        lc.wipeThemOut();
+    });
+
+    $("#btnGlider").click(function() {
+        p.bringCellsToLife(dkg.game_of_life.Shapes.Glider);
+    });
+
+    $("#btnLWSS").click(function() {
+        p.addLivingCells(dkg.game_of_life.Shapes.LWSS);
+    });
+
+    $("#btnPulsar").click(function() {
+        p.addLivingCells(dkg.game_of_life.Shapes.Pulsar);
+    });
+
+    $("#btnAcorn").click(function() {
+        p.addLivingCells(dkg.game_of_life.Shapes.Acorn);
+    });
+
+    $("#btnRPentomino").click(function() {
+        p.addLivingCells(dkg.game_of_life.Shapes.RPentomino);
+    });
+
+    $("#btnGliderGun").click(function() {
+        p.addLivingCells(dkg.game_of_life.Shapes.GliderGun);
+    });
+
+    $("#btnLine").click(function() {
+        p.addLivingCells(dkg.game_of_life.Shapes.Line);
+    });
+
+    $("#btnShowLiveCells").click(function() {
+        console.log(JSON.stringify(p.getCoordinatesOfLivingCells()));
+    });
+
+    $("#btnInvert").click(function() {
+        lc.invertLivingCells();
+    });
+});
+</script>
+</head>
+<body>
+
+<div class="button-panel">
+    <button id="btnStart">Start</button>
+    <button id="btnPause">Pause</button>
+    <button id="btnContinue">Continue</button>
+    <button id="btnPulse">Pulse</button>
+    <button id="btnClear">Clear</button>
+
+    <button id="btnGlider">Glider</button>
+    <button id="btnLWSS">LWSS</button>
+    <button id="btnPulsar">Pulsar</button>
+    <button id="btnAcorn">Acorn</button>
+    <button id="btnRPentomino">RPentomino</button>
+    <button id="btnGliderGun">Glider Gun</button>
+    <button id="btnLine">Line</button>
+    <button id="btnShowLiveCells">Show Live Cells</button>
+    <button id="btnInvert">Invert</button>
+</div>
+
+</body>
+</html>
